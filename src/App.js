@@ -25,9 +25,14 @@ function App() {
           <Route path="cart" element={<Cart />}></Route>
           <Route path="products" element={<Products />}></Route>
           <Route path="products/:id" element={<SingleProduct />}></Route>
-          <Route exact path="/" element={<PrivateRoute />}>
-            <Route path="checkout" element={<Checkout />}></Route>
-          </Route>
+          <Route
+            path="checkout"
+            element={
+              <PrivateRoute>
+                <Checkout />
+              </PrivateRoute>
+            }
+          ></Route>
 
           <Route path="*" element={<Error />}></Route>
         </Routes>

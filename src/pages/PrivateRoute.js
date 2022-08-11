@@ -3,9 +3,9 @@ import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
 // will remove later
 
-const PrivateRoute = () => {
+const PrivateRoute = ({ children }) => {
   const { user } = useAuth0();
 
-  return user ? <Outlet /> : <Navigate to="/" />;
+  return user ? children : <Navigate to="/" />;
 };
 export default PrivateRoute;

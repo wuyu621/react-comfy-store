@@ -9,7 +9,7 @@ import { useUserContext } from "../context/user_context";
 const CartButtons = () => {
   //class name of Wrapper for hiding the cart button when small screen
   const { closeSideBar } = useProductsContext();
-  const { total_items } = useCartContext();
+  const { total_items, clearCart } = useCartContext();
   const { loginWithRedirect, myUser, logout } = useUserContext();
   return (
     <Wrapper className="cart-btn-wrapper">
@@ -24,7 +24,10 @@ const CartButtons = () => {
         <button
           className="auth-btn"
           type="button"
-          onClick={() => logout({ returnTo: window.location.origin })}
+          onClick={() => {
+            clearCart();
+            logout({ returnTo: window.location.origin });
+          }}
         >
           logout
           <FaUserMinus />
